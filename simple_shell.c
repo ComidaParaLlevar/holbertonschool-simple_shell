@@ -41,6 +41,9 @@ while(1)
         return (1);
     }
     exit_shell(user_input);
+    free(user_input);
+    user_input = NULL;
+
     token = strtok(user_input, " \t\n");
     while (token != NULL)
     {
