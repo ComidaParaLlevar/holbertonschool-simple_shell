@@ -9,5 +9,6 @@
 #include <sys/types.h>
 
 int main (int argc, char **argv);
-void exit_shell (char *user_input, size_t *input_size);
+void exit_shell (char *user_input);
+
 #endif

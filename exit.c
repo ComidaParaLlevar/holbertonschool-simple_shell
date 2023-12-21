@@ -6,15 +6,11 @@
  * @input_size: A pointer to the size of the user input buffer.
  */
 
-void exit_shell(char *user_input, size_t *input_size)
+void exit_shell (char *user_input)
 {
-    user_input[strcspn(user_input, "\n")] = '\0';
-    if (strcmp(user_input, "exit") == 0)
+    if (strcmp(user_input, "exit\n") == 0)
     {
         free(user_input);
         exit(0);
     }
-    free(user_input);
-    user_input = NULL;
-    *input_size = 0;
 }

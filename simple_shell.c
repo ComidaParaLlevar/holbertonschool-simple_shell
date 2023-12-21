@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * @brief 
- * 
- * 
- */
+* main - Simple UNIX command line interpreter.
+* Return: Always 0 (success).
+*/
 
 #define MAX_INPUT 1024
 
@@ -14,6 +13,7 @@ int main (int argc, char **argv)
     char *user_input = NULL;
     size_t input_size = 0;
     char *prompt = "$ ";
+    char *token;
     ssize_t bytes;
     
 
@@ -31,17 +31,26 @@ while(1)
 
         printf("%s: %s", cwd, prompt);
     }
-
+    
     bytes = getline(&user_input, &input_size, stdin);
 
     if (bytes == -1)
     {
-        free(user_input);
+        if (isatty(STDIN_FILENO))
+            printf("\n");
         return (1);
     }
-   printf("\n");
-
-   exit_shell(user_input, &input_size);
+    exit_shell(user_input);
+    token = strtok(user_input, " \t\n");
+    while (token != NULL)
+    {
+        printf("%s\n", token);
+        token = strtok(NULL, " \t\n");
+    }
+    
+    free(user_input);
+    printf("\n");
+  
 }
 return (0);
 }
