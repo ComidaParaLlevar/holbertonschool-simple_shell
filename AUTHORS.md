@@ -3,4 +3,4 @@
 # See hack/generate-authors.sh to make modifications.
 
 Koral Rivera <riveraocasiokoral29@gmail.com>
-Lyan Osorio <>
+Lyan Osorio <lyanosorio98@gmail.com>
