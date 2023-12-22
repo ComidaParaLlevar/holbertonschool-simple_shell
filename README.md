@@ -23,11 +23,8 @@ To get started with the Simple Shell project, follow these steps:
 
 The Simple Shell project supports the following features:
 
-- Executing commands: `ls`, `pwd`, `echo`, etc.
-- Command line arguments: `ls -l`, `echo Hello, World!`, etc.
-- Redirection: `ls > file.txt`, `cat < file.txt`, etc.
-- Pipelines: `ls | grep shell`, `echo Hello | wc -c`, etc.
-- Environment variables: `echo $HOME`, `export PATH=/usr/bin`, etc.
+- Executing commands: `ls`, `pwd`, `exit`.
+
 
 For more information on how to use the Simple Shell, refer to the [man page](man_1_simple_shell).
 
