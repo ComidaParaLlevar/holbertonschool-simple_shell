@@ -10,5 +10,5 @@
 
 int main (int argc, char **argv);
 void exit_shell (char *user_input);
-
+void tokenize_input(char* user_input, char** tokens, int* num_tokens);
 #endif

@@ -50,10 +50,11 @@ while(1)
         printf("%s\n", token);
         token = strtok(NULL, " \t\n");
     }
-    
+
     free(user_input);
     printf("\n");
   
 }
 return (0);
 }
+
