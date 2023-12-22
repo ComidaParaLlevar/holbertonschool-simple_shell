@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * search_path - search file between the path
+ * get_path - search file between the path
  * @command: cmd
  * Return: cmd path
  */
 
-char *search_path(char *user_input)
+char *get_path(char *user_input)
 {
 	char *path = s_env("PATH"), *path_cpy;
 	char **path_split;
@@ -21,15 +21,16 @@ char *search_path(char *user_input)
 
 	path_cpy = _strcpy(path_cpy, path);
 	path_split = _token(path_cpy, ":");
-
 	while (path_split[i])
 	{
 		path_len = _strlen(path_split[i]);
-
 		if (path_split[i][path_len - 1] != '/')
+		{
 			path_concat = _strcat(path_split[i], "/");
-
-		path_concat = _strcat(path_split[i], user_input);
+			path_concat = _strcat(path_concat, user_input);
+		}
+		else
+			path_concat = _strcat(path_split[i], user_input);
 
 		if (stat(path_concat, &info) == 0)
 			break;
@@ -41,8 +42,8 @@ char *search_path(char *user_input)
 
 	if (!path_split[i])
 	{
-	free(path_split);
-	return (NULL);
+		free(path_split);
+		return (NULL);
 	}
 
 	free(path_split);

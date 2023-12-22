@@ -4,13 +4,13 @@
  * @args: argument
  * Return: exit status
  */
-int execute(char **args)
+int execute(char **command)
 {
 	int p_id = fork(), status;
 
 	if (p_id == 0)
 	{
-		if (execve(args[0],args,environ) == -1)
+		if (execve(command[0], command, environ) == -1)
 			perror("Error");
 	}
 	else

@@ -9,11 +9,11 @@
 int main (int argc, char **argv)
 {
     char cwd[MAX_INPUT];
-    char *user_input = NULL;
+    char *user_input = NULL, **command;
     size_t input_size = 0;
     char *prompt = "$ ";
-    char *token;
     ssize_t bytes;
+	int status = 0;
 
     (void)argc; (void)argv;
 
@@ -31,30 +31,35 @@ while(1)
     }
 
     bytes = getline(&user_input, &input_size, stdin);
-
-    if (bytes == -1)
+	 if (bytes == -1 || _strcmp(user_input, "exit") == 0)
     {
-        if (isatty(STDIN_FILENO))
-            printf("\n");
-        return (1);
-    }
-    exit_shell(user_input);
-    free(user_input);
-    user_input = NULL;
+		free(user_input);
+		break;
+	}
+	user_input[input_size -1] = '\0';
 
-    token = strtok(user_input, " \t\n");
-    while (token != NULL)
-    {
-        printf("%s\n", token);
-        token = strtok(NULL, " \t\n");
-    }
+	if (_strcmp("env", user_input) == 0)
+	{
+		_env();
+		continue;
+	}
+	if (user_input == NULL)
+	{
+		status = 0;
+		continue;
+	}
+	command = _token(user_input, " ");
+	command[0] = get_path(command[0]);
 
-    free(user_input);
-    printf("\n");
+	if (command[0] != NULL)
+		status = execute(command);
 
+	free(command);
 }
-return (0);
+return (status);
 }
+
+
 
 
 
