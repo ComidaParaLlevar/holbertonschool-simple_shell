@@ -1,0 +1,58 @@
+.TH SIMPLE_SHELL 1 "21 December 2023" "Version 1.0" "Simple Shell Manual"
+
+.SH NAME
+Simple_shell \- A simple UNIX command line interpreter
+
+.SH SYNOPSIS
+.B ./hsh
+The shell reads user input, executes basic commands, and provides a simple command-line environment.
+This is an end of semester project for Holberton Coding School.
+
+.SH DESCRIPTION
+\fBsimple_shell\fR is a simple shell program designed for educational purposes. It provides a basic command-line interface for executing commands.
+
+.SH COMMANDS
+
+.PP
+\fBsimple_shell\fR supports the following commands:
+
+.TP
+.B exit
+Exit the shell.
+
+.TP
+.B env
+Display all the variables in the environment.
+
+.TP
+.B ls
+List all the files and directories under a specified directory.
+
+.TB
+.B pwd
+Prints the full name of the current working directory.
+
+.SH ENVIRONMENT VARIABLES
+.PP
+The following environment variables are used:
+
+.TP
+.B PATH
+The colon-separated list of directories to search for executable programs.
+
+.SH EXIT STATUS
+.PP
+.B simple_shell
+returns a zero exit status on success, and non-zero on failure.
+
+.SH EXAMPLES
+.PP
+To execute a command:
+.BR simple_shell " ls -l"
+
+.SH AUTHOR
+Written by Koral Rivera and Lyan Osorio
+
+.SH REPORTING BUGS
+Report bugs to riveraocasiokoral29@gmail.com
+
