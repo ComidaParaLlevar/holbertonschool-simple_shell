@@ -9,7 +9,18 @@ This is the README file for the Simple Shell project, created for Holberton Codi
 
 ## Description
 
-The Simple Shell project is a command-line interpreter that replicates the basic functionality of the Unix shell. It allows users to execute commands, navigate the file system, and manage processes.
+The Simple Shell project is a command-line interpreter that replicates the basic functionality of the Unix shell. It allows users to execute commands, navigate the file system, and manage processes. 
+
+## General Information
+
+Task 0. README, man_1_simple_shell, AUTHORS
+Task 1. Betty would be proud
+Task 2. Simple shell 0.1
+Task 3. Simple shell 0.2
+Task 4. Simple shell 0.3
+Task 5. Simple shell 0.4
+Task 6. Simple shell 1.0
+
 
 ## Getting Started
 
@@ -23,7 +34,7 @@ To get started with the Simple Shell project, follow these steps:
 
 The Simple Shell project supports the following features:
 
-- Executing commands: `ls`, `pwd`, `exit`.
+- Executing commands: `ls`, `pwd`, `exit`, etc.
 
 
 For more information on how to use the Simple Shell, refer to the [man page](man_1_simple_shell).
