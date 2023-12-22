@@ -9,7 +9,7 @@ This is the README file for the Simple Shell project, created for Holberton Codi
 
 ## Description
 
-The Simple Shell project is a command-line interpreter that replicates the basic functionality of the Unix shell. It allows users to execute commands, navigate the file system, and manage processes. 
+The Simple Shell project is a command-line interpreter that replicates the basic functionality of the Unix shell. It allows users to execute commands, navigate the file system, and manage processes.
 
 ## General Information
 

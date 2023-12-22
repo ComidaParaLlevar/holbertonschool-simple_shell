@@ -1,70 +1,34 @@
 #include "main.h"
 /**
-* main - Simple UNIX command line interpreter.
-* Return: Always 0 (success).
-*/
+ * main - Entry point
+ * Return: 0 on success, 1 on failure
+ */
 
-#define MAX_INPUT 1024
-
-int main (int argc, char **argv)
+int main(void)
 {
-    char cwd[MAX_INPUT];
-    char *user_input = NULL, **command;
-    size_t input_size = 0;
-    char *prompt = "$ ";
-    ssize_t bytes;
-	int status = 0;
+	char *line = NULL;
+	size_t buf_size = 0;
+	ssize_t characters = 0;
 
-    (void)argc; (void)argv;
-
-while(1)
-{
-    if (isatty(STDIN_FILENO))
-    {
-        if (getcwd(cwd, sizeof(cwd)) == NULL)
-        {
-            perror("Error getting current working directory");
-            return (1);
-        }
-
-        printf("%s: %s", cwd, prompt);
-    }
-
-    bytes = getline(&user_input, &input_size, stdin);
-	 if (bytes == -1 || _strcmp(user_input, "exit") == 0)
-    {
-		free(user_input);
-		break;
-	}
-	user_input[input_size -1] = '\0';
-
-	if (_strcmp("env", user_input) == 0)
+	while (1)
 	{
-		_env();
-		continue;
+		if (isatty(STDIN_FILENO) == 1)
+			write(1, "$ ", 2);
+		characters = getline(&line, &buf_size, stdin);
+		if (characters == -1)
+		{
+			if (isatty(STDIN_FILENO) == 1)
+				write(1, "\n", 1);
+			break;
+		}
+		if (line[characters - 1] == '\n')
+			line[characters - 1] = '\0';
+		trim_whitespace(line);
+		if (*line == '\0')
+			continue;
+		if (command_read(line) == 2)
+			break;
 	}
-	if (user_input == NULL)
-	{
-		status = 0;
-		continue;
-	}
-	command = _token(user_input, " ");
-	command[0] = get_path(command[0]);
-
-	if (command[0] != NULL)
-		status = execute(command);
-
-	free(command);
+	free(line);
+	return (0);
 }
-return (status);
-}
-
-
-
-
-
-
-
-
-
-

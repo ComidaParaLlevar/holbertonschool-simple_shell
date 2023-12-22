@@ -1,40 +1,73 @@
 #include "main.h"
+
 /**
- * _env - print enviroment
+ * _printenv - Prints the environment
+ * @void: void
+ * Return: 0 on success, -1 on failure
  */
-void _env(void)
+
+int _printenv(void)
 {
 	int i = 0;
+	char *str = environ[0];
 
-	while (environ[i])
+	while (str != NULL)
 	{
-		printf("%s\n", environ[i]);
+		printf("%s\n", str);
 		i++;
+		str = environ[i];
 	}
+	return (0);
 }
 
 /**
- * s_env - searches for environment variable
- * @var: variable to find
- * Return: variable
+ * _getenv - Gets the value of an environment variable
+ * @var: The environment variable to get
+ * Return: The value of the environment variable
  */
-char *s_env(char *var)
+
+char *_getenv(char *var)
 {
-	int i = 0, c;
-	int status;
+	int i, len_var;
 
-	while (environ[i])
+	len_var = strlen(var);
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		status = 1;
-
-		for (c = 0; environ[i][c] != '='; c++)
-		{
-			if (environ[i][c] != var[c])
-				status = 0;
-		}
-		if (status == 1)
-			break;
-		i++;
+		if (strncmp(environ[i], var, len_var) == 0)
+			return (&environ[i][len_var]);
 	}
-	return (&environ[i][c + 1]);
+	return (NULL);
+}
+
+/**
+ * trim_whitespace - Trims leading and trailing whitespace from a string
+ * @str: The string to trim
+ */
+
+void trim_whitespace(char *str)
+{
+	int i, j;
+	int len = strlen(str);
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (i > 0)
+	{
+		j = 0;
+		while (str[i] != '\0')
+		{
+			str[j] = str[i];
+			i++;
+			j++;
+		}
+		str[j] = '\0';
+	}
+	len = strlen(str);
+	i = len - 1;
+	while (i >= 0 && (str[i] == ' ' || str[i] == '\t'))
+	{
+		str[i] = '\0';
+		i--;
+	}
 }

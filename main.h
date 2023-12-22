@@ -2,27 +2,22 @@
 #define MAIN_H
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stddef.h>
 #include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-int _strcmp(char *s1, char *s2);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
-int _strlen(char *s);
-void _env(void);
-int execute(char **command);
-char *s_env(char *var);
-char *get_path(char *command);
-int main (int argc, char **argv);
-void exit_shell (char *user_input);
-void *_calloc(size_t nmemb, size_t size);
-char **_token(char *str, char *sep);
-
-
 extern char **environ;
+
+
+char *g_path(char *cmd);
+int main(void);
+int execute(char *cmd_arr[]);
+int command_read(char *s);
+int _printenv(void);
+char *_getenv(char *var);
+void trim_whitespace(char *str);
 
 #endif
